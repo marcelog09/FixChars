@@ -1,0 +1,26 @@
+# This file demonstrates how to compile the fixchars project on Linux.
+#
+# To compile FIXCHARS do:
+#
+# make -f makefile-linux
+# make -f makefile-linux clean
+#
+
+GPP = g++
+GCC = gcc
+FIXCHARS_OUTFILE = "Compiled/fixchars.so"
+
+COMPILE_FLAGS = -fpermissive -m32 -fPIC -c -O3 -w -D LINUX -D PROJECT_NAME=\"fixchars\" -I ./SDK/amx/
+
+FIXCHARS = -D FIXCHARS $(COMPILE_FLAGS)
+
+all: FIXCHARS
+
+clean:
+	-rm -f *~ *.o *.so
+
+FIXCHARS: clean
+	$(GPP) $(FIXCHARS) ./SDK/amx/*.c
+	$(GPP) $(FIXCHARS) ./SDK/*.cpp
+	$(GPP) $(FIXCHARS) *.cpp
+	$(GPP) -m32 -O2 -fshort-wchar -shared -o $(FIXCHARS_OUTFILE) *.o

@@ -1,0 +1,29 @@
+# This file demonstrates how to compile the fixchars project on Windows.
+#
+# To compile FIXCHARS do:
+#
+# mingw32-make -f makefile-win32
+# mingw32-make -f makefile-win32 clean
+#
+# Requires MinGW: http://www.mingw.org/ (Add C:\MinGW\bin\ folder to the PATH environment variable)
+#
+
+GPP = g++
+GCC = gcc
+FIXCHARS_OUTFILE = "Compiled/fixchars.dll"
+
+COMPILE_FLAGS = -D HAVE_STDINT_H -D __need_size_t -D _MSC_VER -m32 -fPIC -c -O3 -w -D WIN32 -D PROJECT_NAME=\"fixchars\" -I ./SDK/amx/
+
+FIXCHARS = -D FIXCHARS $(COMPILE_FLAGS)
+
+all: FIXCHARS
+
+clean:
+	del /Q /F *~ *.o *.so
+
+FIXCHARS: clean
+	$(GPP) $(FIXCHARS) ./SDK/amx/*.c
+	$(GPP) $(FIXCHARS) ./SDK/*.cpp
+	$(GPP) $(FIXCHARS) *.cpp
+	$(GPP) -Wl,--enable-stdcall-fixup -m32 -O2 -fshort-wchar -shared -o $(FIXCHARS_OUTFILE) *.o fixchars.def
+
