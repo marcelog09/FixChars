@@ -1,3 +1,14 @@
+// -----------------------------------------------------
+//
+//  FixChars Plugin v. 0.1 beta
+//  by ScriptHunter
+//
+//  Contribute:
+//      https://github.com/scripthunter7/FixChars
+//
+//
+// -----------------------------------------------------
+
 #include "fixchars.h"
 
 int Fixchars_FixCharacter(int chr) {
