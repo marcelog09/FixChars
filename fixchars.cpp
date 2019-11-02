@@ -121,7 +121,6 @@ cell AMX_NATIVE_CALL Fixchars_AddMenuItem(AMX* amx, cell* params) {
     return AddMenuItem(amx, params);
 }
 
-
 // https://wiki.sa-mp.com/wiki/TextDrawCreate
 cell AMX_NATIVE_CALL Fixchars_TextDrawCreate(AMX* amx, cell* params) {
     CHECK_PARAMS_EQ(params, 3);
@@ -182,7 +181,6 @@ PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX *amx) {
     //logprintf(" * [Fixchars] Functions successfully redirected.");
     return amx_Register(amx, PluginNatives, -1);
 }
-
 
 PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX *amx) {
     return AMX_ERR_NONE;

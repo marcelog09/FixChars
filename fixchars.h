@@ -5,7 +5,7 @@
 
 int AMXAPI amx_GetCString(AMX *amx, cell param, char *&dest);
 int AMXAPI amx_SetCString(AMX *amx, cell param, const char *str, int len);
-void AMXAPI amx_Redirect(AMX *amx, char *from, ucell to, AMX_NATIVE *store) ;
+void AMXAPI amx_Redirect(AMX *amx, char *from, ucell to, AMX_NATIVE *store);
 
 typedef void (*logprintf_t)(char* format, ...);
 
